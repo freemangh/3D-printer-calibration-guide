@@ -1,7 +1,8 @@
 <template>
-  <q-layout view="hHh LpR fFf">
-    <q-header elevated>
-      <q-toolbar>
+  <q-layout view="hHh LpR fFf" class="text-body1" >
+    <q-header >
+      <q-toolbar 
+      :class="$q.dark.isActive ? 'bg-black' : 'bg-indigo-6'">
         <q-btn
           dense
           flat
@@ -20,9 +21,9 @@
           stretch
           flat
           @click="darkChange"
-          class="q-py-none q-my-none"
           style="font-size: 1.2rem"
           icon="invert_colors"
+          :class="($q.dark.isActive ? 'secondary' : 'black')"
         />
       </q-toolbar>
     </q-header>
@@ -91,20 +92,7 @@ export default {
           label: "Головна",
           key: "home",
           children: [
-            {
-              label: "Терміни (складові принтера і т д)",
-              key: "_terms",
-              children: [
-                { label: "Екструдер (Extruder)", key: "extruder" },
-                { label: "Фідер (Feeder)", key: "feeder" },
-                { label: "Нагрівальна платформа (стіл)", key: "heated-bed" },
-                { label: "Рама (Frame)", key: "frame" },
-                { label: "Мотори (Motors)", key: "motors" },
-                { label: "Датчики (Sensors)", key: "sensors" },
-                { label: "Контролер (Controller)", key: "controller" },
-                { label: "Прошивка (Firmware)", key: "firmware" },
-              ],
-            },
+            
             {
               label: "Дефекти друку",
               key: "_terms12",
@@ -133,6 +121,21 @@ export default {
                   label: "Темпратура друку",
                   key: "pid",
                 },
+              ],
+            },{
+              label: "Супутні терміни",
+              key: "_terms",
+              children: [
+                { label: "Екструдер (Extruder)", key: "extruder" },
+                { label: "Сопло (Nozzle)", key: "nozzle" },
+                { label: "Фідер (Feeder)", key: "feeder" },
+                { label: "Стіл (Платформа)", key: "heated-bed" },
+                { label: "Рама (Frame)", key: "frame" },
+                { label: "Мотори (Motors)", key: "motors" },
+                { label: "Датчики (Sensors)", key: "sensors" },
+                { label: "Контролер (Controller)", key: "controller" },
+                { label: "Прошивка (Firmware)", key: "firmware" },
+                { label: "Філамент (Filament)", key: "filament" },
               ],
             },
           ],

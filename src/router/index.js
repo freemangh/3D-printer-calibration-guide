@@ -12,6 +12,8 @@ const Frame = () => import("../views/terms/Frame.vue");
 const HeatedBed = () => import("../views/terms/HeatedBed.vue");
 const Motors = () => import("../views/terms/Motors.vue");
 const Sensors = () => import("../views/terms/Sensors.vue");
+const Filament = () => import("../views/terms/Filament.vue");
+const Nozzle = () => import("../views/terms/Nozzle.vue");
 
 // calibration
 const esteps = () => import("../views/calibration/e-steps.vue");
@@ -127,6 +129,30 @@ const routes = [
         path: "",
         name: "sensors",
         component: Sensors,
+      },
+    ],
+  },
+  {
+    path: "/filament",
+    name: "filament",
+    component: BaseLayout,
+    children: [
+      {
+        path: "",
+        name: "filament",
+        component: Filament,
+      },
+    ],
+  },
+  {
+    path: "/nozzle",
+    name: "nozzle",
+    component: BaseLayout,
+    children: [
+      {
+        path: "",
+        name: "nozzle",
+        component: Nozzle,
       },
     ],
   },

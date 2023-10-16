@@ -1,58 +1,205 @@
 <template>
-  <div>
-    // todo все хуйня давай по новій # Калібрування E-steps екструдера ## Для
-    bowden екструдера Відкрутіть тефлонову трубочку від екструдера [фото]
-    Вставляємо філамент, відрізаємо рівненько щоб не торяав з екструдера [фото]
-    Перед тим як давити філамент потрібно або розігріти хот-енд або вимкнути
-    перевірку температури за допомогою gcode (для Marlin) ```gcode M302 P1 ```
-    Це потрібно тому що принтер не дозволить давити пруток на холодну.
-    Видавлюємо 100-300мм прутка, чим більше тим вище буде точність, але більше
-    300 на мою думку немає сенсу, як і менше 100. Видавити можна через екран
-    (можливо навіть вдастця видавити на холодну, може запитати чи дійсно
-    видавити без нагріву) або видавити через gcode. E - кількість в
-    міліметрах<br />
-    F - швидкість в міліметрах на хвилину ```gcode M83 G1 E100 F100 M82 ```
-    Відрізаємо шматок який видавився так само під рівень екструдеру як відрізали
-    перед цим. Міряємо і запамятовуємо скільки видавилось по факту. Заходимо
-    через екран в налаштування принтеру, шукаємо параметр E-Steps. Підставляємо
-    наші данні в формулу ([або користуємось онлайн калькулятором](todo)) ``` N =
-    C * E / D ``` Де:<br />
-    N - Нове значення E-Steps<br />
-    D - Скільки міліметрів прутка видавилось<br />
-    E - Поточне значення E-Steps<br />
-    C - Скільки міліметрів прутка видавлювали Вводимо розраховане значення та
-    зберігаємо в EPROMM Якщо вимикали перевірку температури через gcode то не
-    забудьте увімкнути назад ```gcode M302 P0 ``` ## Для direct екструдера
-    Розігрійте хот-енд, витягніть філамент, зніміть сопло, перевірте щоб в
-    хот-енді не було пластику (його там в принципі не має бути але всеж)
-    Дочекайтесь поки хот-енд повністью охолоне!!! при нагрітому хот-енді пластик
-    буде деформуватись/розтягуватись і така "калібровка" зробить тільки гірше.
-    Перед тим як давити філамент потрібно вимкнути перевірку температури за
-    допомогою gcode (для Marlin) ```gcode M302 P1 ``` Це потрібно тому що
-    принтер не дозволить давити пруток на холодну. Заправляємо філамент,
-    видавлюємо щоб почав вилазити з хот-енду, обрізаємо щоб не виходив з
-    хот-енду. Видавлюємо 100-300мм прутка, чим більше тим вище буде точність але
-    більше 300 на мою думку немає сенсу, як і менше 100. Видавити можна через
-    екран (можливо навіть вдастця видавити на холодну, може запитати чи дійсно
-    видавити без нагріву) або видавити через gcode. E - кількість в
-    міліметрах<br />
-    F - швидкість в міліметрах на хвилину ```gcode M83 G1 E100 F100 M82 ```
-    Відрізаємо шматок який видавився так само під рівень хот-енду як відрізали
-    перед цим. Міряємо і запамятовуємо скільки видавилось по факту. Заходимо
-    через екран в налаштування принтеру, шукаємо параметр E-Steps. Підставляємо
-    наші данні в формулу ([або користуємось онлайн калькулятором](todo)) ``` N =
-    C * E / D ``` Де:<br />
-    N - Нове значення E-Steps<br />
-    D - Скільки міліметрів прутка видавилось<br />
-    E - Поточне значення E-Steps<br />
-    C - Скільки міліметрів прутка видавлювали Вводимо розраховане значення та
-    зберігаємо в EPROMM Якщо вимикали перевірку температури через gcode то не
-    забудьте увімкнути назад ```gcode M302 P0 ```
-  </div>
+  <q-page>
+    <vue-easy-lightbox
+      :visible="visibleRef"
+      :imgs="imgsRef"
+      :index="indexRef"
+      @hide="onHide"
+    ></vue-easy-lightbox>
+    <div class="row q-ma-md justify-center">
+      <q-card class="col-12 q-pa-md">
+        <h3 class="q-mt-none">Калібрування E-Steps</h3>
+
+        <p>
+          Калібрування E-Steps (кількість кроків на один міліметр філаменту),
+          також відоме як "екструдерний калібр" або "екструдерна калібрація", є
+          важливим кроком для точногї подачі матеріалу у вашому 3D-принтері з
+          технологією FDM. Коли екструдер правильно налаштований, це допомагає
+          уникнути проблем, таких як пере-екструзія чи недо-екструзія. Також цю
+          процедуру потрібно проводити після заміни
+          <q-btn
+            :to="{ name: 'feeder' }"
+            outline
+            class="q-py-none"
+            label="ФІДЕРА"
+          />.
+        </p>
+
+        <p>Щоб відкалібрувати E-Steps нам потрібен маркер і лінійка.</p>
+
+        <p>
+          Для початку нам потрібно дізнатись поточні значення E-Steps
+          <q-badge color="info" text-color="black">
+            OldE
+            <q-icon name="info" size="14px" class="q-ml-xs" />
+          </q-badge>
+          це можна зробити через екран або за допомогою GCODE (gкод буде
+          пізніше)
+        </p>
+
+        <p>
+          Заправляємо
+          <q-btn
+            :to="{ name: 'filament' }"
+            outline
+            class="q-py-none"
+            label="філамент"
+          />
+          в
+          <q-btn
+            :to="{ name: 'feeder' }"
+            outline
+            class="q-py-none"
+            label="фідер"
+          />, гріємо сопло, прикладуємо лінійку і ставимо відмітку, через
+          <q-badge color="info" text-color="black">
+            Mark
+            <q-icon name="info" size="14px" class="q-ml-xs" />
+          </q-badge>
+          11см фід
+          <q-btn
+            :to="{ name: 'feeder' }"
+            outline
+            class="q-py-none"
+            label="фідера"
+          />
+          -
+          <q-btn @click="showSingle" outline class="q-py-none" label="фото" />
+          видавлюємо
+          <q-badge color="info" text-color="black">
+            Move
+            <q-icon name="info" size="14px" class="q-ml-xs" />
+          </q-badge>
+          10см прутка і міряємо
+
+          <q-badge color="info" text-color="black">
+            Fact
+            <q-icon name="info" size="14px" class="q-ml-xs" />
+          </q-badge>
+          відстань до нішої мітки, з отриманими данними йдем до калькулятора в
+          кінці сторінки. Після розрахунку необхідного значення вводимо його в
+          налаштування принтера через екран або через GCODE (пізніше будуть
+          додані gкоди) і зберігаємо значення в EPPROM.
+        </p>
+
+        <p>
+          Не обовязково але бажано продовження. Якщо ви хочете ще збільшити
+          точність то після калібровки з 11см ви можете повторити всю ту саму
+          процедуру але з більшим значенням, наприклад уже з 31см (значення
+          більше ніх 31 на мою думку не буде мати особливо великого значення,
+          такої точності калібровки буде вже точно достатньо)
+        </p>
+      </q-card>
+
+      <div class="q-pt-md">
+        <q-card class="col-xs-12 col-sm-4 col-md-2">
+          <q-bar>
+            <div>Калькулятор</div>
+          </q-bar>
+          <q-card-section>
+            <p class="text-h6">
+              (OldE / (Mark - Fact)) * Move =
+              <span class="text-weight-bolder">NewE</span>
+            </p>
+            NewE - Нове значення E-Steps<br />
+            <q-badge color="info" text-color="black">
+              Mark
+              <q-icon name="info" size="14px" class="q-ml-xs" />
+            </q-badge>
+            - Де поставили мітку (11 або 31см або інше)<br />
+            <q-badge color="info" text-color="black">
+              Move
+              <q-icon name="info" size="14px" class="q-ml-xs" />
+            </q-badge>
+            - Скільки видавили (10см або 30см або інше)<br />
+            <q-badge color="info" text-color="black">
+              Fact
+              <q-icon name="info" size="14px" class="q-ml-xs" />
+            </q-badge>
+            - Відстань до мітки після видавлювання прутка<br />
+            <q-badge color="info" text-color="black">
+              OldE
+              <q-icon name="info" size="14px" class="q-ml-xs" />
+            </q-badge>
+            - Поточне значення E-Steps<br />
+
+            <q-banner  rounded :class="($q.dark.isActive ? 'bg-brown-10' : 'bg-warning') + ' q-mt-xs'">
+              <p class="text-h6">
+                ({{ oldE }} / ({{ mark }} - {{ fact }})) * {{ move }} =
+                <span class="text-weight-bolder">{{
+                  ((oldE / (mark - fact)) * move).toFixed(2)
+                }}</span>
+              </p>
+              <q-input
+                class="q-pa-xs"
+                v-model.number="mark"
+                type="number"
+                filled
+                label="Mark Де поставили мітку"
+              >
+                <template v-slot:prepend> <q-icon name="event" /></template>
+              </q-input>
+              <q-input
+                class="q-pa-xs"
+                v-model.number="move"
+                type="number"
+                filled
+                label="Move Скільки видавили"
+              />
+              <q-input
+                class="q-pa-xs"
+                v-model.number="fact"
+                type="number"
+                filled
+                label="Fact Відстань до мітки після видавлювання"
+              />
+              <q-input
+                class="q-pa-xs"
+                v-model.number="oldE"
+                type="number"
+                filled
+                label="OldE Поточне значення E-Steps"
+              />
+            </q-banner>
+          </q-card-section>
+        </q-card>
+      </div>
+    </div>
+  </q-page>
 </template>
 
 <script>
+import { ref } from "vue";
+import VueEasyLightbox from "vue-easy-lightbox";
+
 export default {
   name: "e-steps",
+  components: {
+    VueEasyLightbox,
+  },
+  setup() {
+    const visibleRef = ref(false);
+    const indexRef = ref(0); // default 0
+    const imgsRef = ref([]);
+
+    function showSingle() {
+      imgsRef.value = "/ucarecdn.webp";
+      visibleRef.value = true;
+    }
+
+    const onHide = () => (visibleRef.value = false);
+
+    return {
+      visibleRef,
+      indexRef,
+      imgsRef,
+      showSingle,
+      onHide,
+      mark: ref(110),
+      move: ref(100),
+      fact: ref(10),
+      oldE: ref(95),
+    };
+  },
 };
 </script>
