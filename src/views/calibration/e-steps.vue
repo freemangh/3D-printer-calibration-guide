@@ -76,7 +76,7 @@
             Fact
             <q-icon name="info" size="14px" class="q-ml-xs" />
           </q-badge>
-          відстань до нішої мітки, з отриманими данними йдем до калькулятора в
+          відстань до нашої мітки, з отриманими данними йдем до калькулятора в
           кінці сторінки. Після розрахунку необхідного значення вводимо його в
           налаштування принтера через екран або через GCODE (пізніше будуть
           додані gкоди) і зберігаємо значення в EPPROM.
@@ -123,7 +123,12 @@
             </q-badge>
             - Поточне значення E-Steps<br />
 
-            <q-banner  rounded :class="($q.dark.isActive ? 'bg-brown-10' : 'bg-warning') + ' q-mt-xs'">
+            <q-banner
+              rounded
+              :class="
+                ($q.dark.isActive ? 'bg-brown-10' : 'bg-warning') + ' q-mt-xs'
+              "
+            >
               <p class="text-h6">
                 ({{ oldE }} / ({{ mark }} - {{ fact }})) * {{ move }} =
                 <span class="text-weight-bolder">{{
@@ -179,11 +184,11 @@ export default {
   },
   setup() {
     const visibleRef = ref(false);
-    const indexRef = ref(0); // default 0
+    const indexRef = ref(0);
     const imgsRef = ref([]);
 
     function showSingle() {
-      imgsRef.value = "/ucarecdn.webp";
+      imgsRef.value = window.location.pathname + "/ucarecdn.webp";
       visibleRef.value = true;
     }
 
