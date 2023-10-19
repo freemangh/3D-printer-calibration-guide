@@ -10,7 +10,6 @@ const Feeder = () => import("../views/terms/Feeder.vue");
 const Firmware = () => import("../views/terms/Firmware.vue");
 const Frame = () => import("../views/terms/Frame.vue");
 const HeatedBed = () => import("../views/terms/HeatedBed.vue");
-const Motors = () => import("../views/terms/Motors.vue");
 const Sensors = () => import("../views/terms/Sensors.vue");
 const Filament = () => import("../views/terms/Filament.vue");
 const Nozzle = () => import("../views/terms/Nozzle.vue");
@@ -105,18 +104,6 @@ const routes = [
         path: "",
         name: "heated-bed",
         component: HeatedBed,
-      },
-    ],
-  },
-  {
-    path: "/motors",
-    name: "motors",
-    component: BaseLayout,
-    children: [
-      {
-        path: "",
-        name: "motors",
-        component: Motors,
       },
     ],
   },

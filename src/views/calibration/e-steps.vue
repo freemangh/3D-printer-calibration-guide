@@ -1,11 +1,6 @@
 <template>
   <q-page>
-    <vue-easy-lightbox
-      :visible="visibleRef"
-      :imgs="imgsRef"
-      :index="indexRef"
-      @hide="onHide"
-    ></vue-easy-lightbox>
+    <PopUpImage v-model:url.sync="imgUrl" />
     <div class="row q-ma-md justify-center">
       <q-card class="col-12 q-pa-md">
         <h3 class="q-mt-none">Калібрування E-Steps</h3>
@@ -64,7 +59,12 @@
             label="фідера"
           />
           -
-          <q-btn @click="showSingle" outline class="q-py-none" label="фото" />
+          <q-btn
+            @click="imgUrl = '/ucarecdn.webp'"
+            outline
+            class="q-py-none"
+            label="фото"
+          />
           видавлюємо
           <q-badge color="info" text-color="black">
             Move
@@ -175,31 +175,16 @@
 
 <script>
 import { ref } from "vue";
-import VueEasyLightbox from "vue-easy-lightbox";
+import PopUpImage from "../../Components/PopUpImage.vue";
 
 export default {
   name: "e-steps",
   components: {
-    VueEasyLightbox,
+    PopUpImage,
   },
   setup() {
-    const visibleRef = ref(false);
-    const indexRef = ref(0);
-    const imgsRef = ref([]);
-
-    function showSingle() {
-      imgsRef.value = window.location.pathname + "/ucarecdn.webp";
-      visibleRef.value = true;
-    }
-
-    const onHide = () => (visibleRef.value = false);
-
     return {
-      visibleRef,
-      indexRef,
-      imgsRef,
-      showSingle,
-      onHide,
+      imgUrl: ref(""),
       mark: ref(110),
       move: ref(100),
       fact: ref(10),
