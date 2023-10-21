@@ -2,7 +2,7 @@
   <q-page>
     <PopUpImage v-model:url.sync="imgUrl" />
     <div class="row q-ma-md justify-center">
-      <q-card class="col-12 q-pa-md">
+      <q-card class="col-12 q-pa-md" bordered>
         <h3 class="q-mt-none">Калібрування E-Steps</h3>
 
         <p>
@@ -92,7 +92,7 @@
       </q-card>
 
       <div class="q-pt-md">
-        <q-card class="col-xs-12 col-sm-4 col-md-2">
+        <q-card class="col-xs-12 col-sm-4 col-md-2" bordered>
           <q-bar>
             <div>Калькулятор</div>
           </q-bar>

@@ -35,16 +35,15 @@
         node-key="key"
         @update:selected="onSelected"
         selected-color="red"
-      >
-      </q-tree>
+      />
     </q-drawer>
 
     <q-page-container>
       <router-view />
     </q-page-container>
     <q-dialog v-model="seamless" seamless position="bottom">
-      <q-card>
-        <q-bar>
+      <q-card bordered>
+        <q-bar style="padding-right: 2px">
           <q-space />
           <q-btn flat icon="close" v-close-popup> </q-btn>
         </q-bar>
