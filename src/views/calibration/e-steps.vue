@@ -13,7 +13,7 @@
           уникнути проблем, таких як пере-екструзія чи недо-екструзія. Також цю
           процедуру потрібно проводити після заміни
           <q-btn
-            :to="{ name: 'feeder' }"
+            to="feeder"
             outline
             class="q-py-none"
             label="ФІДЕРА"
@@ -35,14 +35,14 @@
         <p>
           Заправляємо
           <q-btn
-            :to="{ name: 'filament' }"
+            to="filament"
             outline
             class="q-py-none"
             label="філамент"
           />
           в
           <q-btn
-            :to="{ name: 'feeder' }"
+            to="feeder"
             outline
             class="q-py-none"
             label="фідер"
@@ -53,7 +53,7 @@
           </q-badge>
           11см фід
           <q-btn
-            :to="{ name: 'feeder' }"
+            to="feeder"
             outline
             class="q-py-none"
             label="фідера"

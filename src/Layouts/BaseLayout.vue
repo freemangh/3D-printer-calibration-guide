@@ -125,10 +125,15 @@ export default {
     const router = useRouter();
 
     if (router.currentRoute.value.name == "404") {
-      router.push("/");
+      router.go("/");
     }
 
     const selected = ref(router.currentRoute.value.name);
+
+    router.beforeEach((to, from, next) => {
+      selected.value = to.name;
+      next();
+    });
 
     Dark.set(localStorage.dark === "true");
 
