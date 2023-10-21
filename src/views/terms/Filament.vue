@@ -75,7 +75,18 @@
             </q-card>
           </div>
         </div>
+        <h3 class="q-mt-none">Вага котушок пластику різних виробників</h3>
+LBL 3kg - 630-650g
+LBL 0.8kg - 220g
 
+Plexiwire (0.9kg) -150-169g 
+
+3Dplast 0.85kg - 240g
+3dPlast 3kg - 630-645g
+
+Monofilament 0.75kg - 230g 
+
+U3DF 0.75kg - 255g 
       </q-card>
     </div>
   </q-page>

@@ -125,7 +125,7 @@ export default {
     const router = useRouter();
 
     if (router.currentRoute.value.name == "404") {
-      router.go("/");
+      router.push("home");
     }
 
     const selected = ref(router.currentRoute.value.name);
@@ -144,7 +144,7 @@ export default {
 
     function onSelected(node) {
       if (node == null) {
-        router.push("/");
+        router.push("home");
         return;
       }
       if (node.startsWith("_")) return;
