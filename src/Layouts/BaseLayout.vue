@@ -175,7 +175,7 @@ export default {
             },
             {
               label: "Калібрування",
-              key: "_terms5",
+              key: "calibration",
               children: [
                 {
                   label: "Фідер (E-steps)",

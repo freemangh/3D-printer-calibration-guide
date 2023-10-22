@@ -19,6 +19,7 @@ const esteps = () => import("../views/calibration/e-steps.vue");
 const flow = () => import("../views/calibration/flow.vue");
 const pid = () => import("../views/calibration/pid.vue");
 const retract = () => import("../views/calibration/retract.vue");
+const calibration = () => import("../views/calibration/index.vue");
 
 const routes = [
   {
@@ -145,6 +146,19 @@ const routes = [
   },
 
   // calibration
+  {
+    path: "/calibration",
+    name: "calibration",
+    component: BaseLayout,
+    children: [
+      {
+        path: "",
+        name: "calibration",
+        component: calibration,
+      },
+    ],
+  },
+
   {
     path: "/e-steps",
     name: "e-steps",

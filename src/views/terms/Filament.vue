@@ -174,7 +174,7 @@ export default {
           shortName: "CoPET",
           conditions: {
             nozzleTemp: "130-260",
-            betTemp: "70-90",
+            bedTemp: "70-90",
             texts: ["CoPET може добре адгезувати до підкладок з каптону, якщо вони нагріті та правильно підготовлені."],
           },
           termsOfUse: [
