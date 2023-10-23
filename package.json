@@ -14,7 +14,8 @@
     "quasar": "^2.0.0",
     "vue": "^3.2.13",
     "vue-easy-lightbox": "^1.16.0",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "vue-window-size": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

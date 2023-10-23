@@ -1,7 +1,11 @@
 <template>
   <q-page>
     <PopUpImage v-model:url.sync="imgUrl" />
-    <div class="row q-ma-md justify-center">
+    <div
+      :class="
+        ($windowWidth > 768 ? 'q-ma-md' : 'q-ma-none') + ' row justify-center'
+      "
+    >
       <q-card class="col-12 q-pa-md" bordered>
         <h3 class="q-mt-none">Філамент для 3D друку</h3>
         <p>
@@ -12,7 +16,11 @@
           такі як скло, метал, дерево та інші.
         </p>
         <h5>Основні види філаментів</h5>
-        <div class="row q-ma-md justify-center">
+        <div
+          :class="
+            ($windowWidth > 768 ? 'q-ma-md' : 'q-my-md') + ' row justify-center'
+          "
+        >
           <div
             class="col-sm-12 col-md-6 col-lg-4"
             v-for="filamentType in filamentTypes"
@@ -76,27 +84,25 @@
           </div>
         </div>
         <h3 class="q-mt-none">Вага котушок пластику різних виробників</h3>
-LBL 3kg - 630-650g
-LBL 0.8kg - 220g
-
-Plexiwire (0.9kg) -150-169g 
-
-3Dplast 0.85kg - 240g
-3dPlast 3kg - 630-645g
-
-Monofilament 0.75kg - 230g 
-
-U3DF 0.75kg - 255g 
+        LBL 3kg - 630-650g<br />
+        LBL 0.8kg - 220g <br />
+        Plexiwire (0.9kg) -150-169g <br />
+        3Dplast 0.85kg - 240g <br />
+        3dPlast 3kg - 630-645g <br />
+        Monofilament 0.75kg - 230g <br />
+        U3DF 0.75kg - 255g
       </q-card>
     </div>
   </q-page>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, defineComponent } from "vue";
 import PopUpImage from "../../Components/PopUpImage.vue";
+import { vueWindowSizeMixin } from "vue-window-size/mixin";
 
-export default {
+export default defineComponent({
+  mixins: [vueWindowSizeMixin()],
   name: "Filament",
   components: {
     PopUpImage,
@@ -175,7 +181,9 @@ export default {
           conditions: {
             nozzleTemp: "130-260",
             bedTemp: "70-90",
-            texts: ["CoPET може добре адгезувати до підкладок з каптону, якщо вони нагріті та правильно підготовлені."],
+            texts: [
+              "CoPET може добре адгезувати до підкладок з каптону, якщо вони нагріті та правильно підготовлені.",
+            ],
           },
           termsOfUse: [
             "Деталі з CoPET можуть витримувати температури в діапазоні від 80°C до 100°C без деформації чи втрати структурних властивостей.",
@@ -190,5 +198,5 @@ export default {
       ]),
     };
   },
-};
+});
 </script>

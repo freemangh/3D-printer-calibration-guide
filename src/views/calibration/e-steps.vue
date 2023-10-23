@@ -1,7 +1,11 @@
 <template>
   <q-page>
     <PopUpImage v-model:url.sync="imgUrl" />
-    <div class="row q-ma-md justify-center">
+    <div
+      :class="
+        ($windowWidth > 768 ? 'q-ma-md' : 'q-ma-none') + ' row justify-center'
+      "
+    >
       <q-card class="col-12 q-pa-md" bordered>
         <h3 class="q-mt-none">Калібрування E-Steps</h3>
 
@@ -12,12 +16,7 @@
           технологією FDM. Коли екструдер правильно налаштований, це допомагає
           уникнути проблем, таких як пере-екструзія чи недо-екструзія. Також цю
           процедуру потрібно проводити після заміни
-          <q-btn
-            to="feeder"
-            outline
-            class="q-py-none"
-            label="ФІДЕРА"
-          />.
+          <q-btn to="feeder" outline class="q-py-none" label="ФІДЕРА" />.
         </p>
 
         <p>Щоб відкалібрувати E-Steps нам потрібен маркер і лінійка.</p>
@@ -34,30 +33,16 @@
 
         <p>
           Заправляємо
-          <q-btn
-            to="filament"
-            outline
-            class="q-py-none"
-            label="філамент"
-          />
+          <q-btn to="filament" outline class="q-py-none" label="філамент" />
           в
-          <q-btn
-            to="feeder"
-            outline
-            class="q-py-none"
-            label="фідер"
-          />, гріємо сопло, прикладуємо лінійку і ставимо відмітку, через
+          <q-btn to="feeder" outline class="q-py-none" label="фідер" />, гріємо
+          сопло, прикладуємо лінійку і ставимо відмітку, через
           <q-badge color="info" text-color="black">
             Mark
             <q-icon name="info" size="14px" class="q-ml-xs" />
           </q-badge>
           11см фід
-          <q-btn
-            to="feeder"
-            outline
-            class="q-py-none"
-            label="фідера"
-          />
+          <q-btn to="feeder" outline class="q-py-none" label="фідера" />
           -
           <q-btn
             @click="imgUrl = '/ucarecdn.webp'"
@@ -174,10 +159,12 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, defineComponent } from "vue";
 import PopUpImage from "../../Components/PopUpImage.vue";
+import { vueWindowSizeMixin } from "vue-window-size/mixin";
 
-export default {
+export default defineComponent({
+  mixins: [vueWindowSizeMixin()],
   name: "e-steps",
   components: {
     PopUpImage,
@@ -191,5 +178,5 @@ export default {
       oldE: ref(95),
     };
   },
-};
+});
 </script>
