@@ -82,6 +82,13 @@
             <div>Калькулятор</div>
           </q-bar>
           <q-card-section>
+            <q-banner inline-actions rounded class="bg-orange text-white">
+              <template v-slot:avatar>
+                <q-icon name="info" />
+              </template>
+              Увага, не забувайте змінювати значення E-Steps в калькуляторі
+              після кожної зміни цього значення в принтері
+            </q-banner>
             <p class="text-h6">
               (OldE / (Mark - Fact)) * Move =
               <span class="text-weight-bolder">NewE</span>
@@ -114,6 +121,18 @@
                 ($q.dark.isActive ? 'bg-brown-10' : 'bg-warning') + ' q-mt-xs'
               "
             >
+              <q-banner
+                v-if="
+                  oldE !== 0 && Math.abs(mark - move - fact) / (move / 100) < 1
+                "
+                class="bg-primary text-white"
+              >
+                <template v-slot:avatar>
+                  <q-icon name="info" />
+                </template>
+                Похибка менше 1мм на 10см, це хороший результат, можете
+                переходити до наступного етапу калібрування 😉
+              </q-banner>
               <p class="text-h6">
                 ({{ oldE }} / ({{ mark }} - {{ fact }})) * {{ move }} =
                 <span class="text-weight-bolder">{{
@@ -175,7 +194,7 @@ export default defineComponent({
       mark: ref(110),
       move: ref(100),
       fact: ref(10),
-      oldE: ref(95),
+      oldE: ref(0),
     };
   },
 });
