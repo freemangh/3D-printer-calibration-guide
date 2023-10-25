@@ -300,7 +300,7 @@ export default defineComponent({
           "https://www.3dplastic.com.ua/templates/site/images/favicon.ico",
         siteUrl: "https://www.3dplastic.com.ua/",
         rating: null,
-        types: [ filamentTypes.petg],
+        types: [filamentTypes.petg],
       },
       tdbro: {
         name: "3D BRO",
@@ -308,7 +308,7 @@ export default defineComponent({
           "https://petg.com.ua/wp-content/uploads/2023/02/cropped-favicon-32x32.png",
         siteUrl: "https://petg.com.ua/",
         rating: null,
-        types: [ filamentTypes.petg],
+        types: [filamentTypes.petg],
       },
     };
     return {
@@ -327,6 +327,7 @@ export default defineComponent({
           label: "Назва",
           align: "left",
           sortable: true,
+          field: (row) => row.name,
         },
         {
           name: "types",
@@ -334,12 +335,14 @@ export default defineComponent({
           align: "center",
           label: "Пластики",
           sortable: true,
+          field: (row) => row.types.length,
         },
         {
           name: "rating",
           required: true,
           label: "Рейтинг",
           sortable: true,
+          field: (row) => row.rating,
         },
       ]),
       pagination: ref({
