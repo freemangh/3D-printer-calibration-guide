@@ -8,11 +8,14 @@
 </template>
 
 <script>
-import { ref, watch, defineEmits } from "vue";
+import { ref, watch } from "vue";
 import VueEasyLightbox from "vue-easy-lightbox";
 
 export default {
   name: "PopUpImage",
+  components: {
+    VueEasyLightbox,
+  },
   props: {
     url: {
       type: String,
@@ -20,9 +23,6 @@ export default {
     },
   },
   emits: ["update:url"],
-  components: {
-    VueEasyLightbox,
-  },
   setup(props, { emit }) {
     const visibleRef = ref(false);
     const indexRef = ref(0);
