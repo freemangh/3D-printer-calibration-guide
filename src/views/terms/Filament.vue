@@ -7,7 +7,9 @@
       "
     >
       <q-card class="col-12 q-pa-md" bordered>
-        <h3 class="q-mt-none">Філамент для 3D друку</h3>
+        <h3 class="q-mt-none">
+          Філамент для 3D друку
+        </h3>
         <p>
           Що таке філамент? Філамент – це матеріал у вигляді тонкої нитки, який
           використовується у 3D принтерах для створення об'єктів шляхом
@@ -17,11 +19,11 @@
         </p>
         <h5>Основні види філаментів</h5>
         <q-select
+          v-model="visibleTypes"
           label="Про які пластики відображати інформацію"
           filled
           multiple
           clearable
-          v-model="visibleTypes"
           :options="filamentTypes"
           :option-value="(opt) => opt.shortName"
           :option-label="(opt) => opt.shortName + ' (' + opt.name + ')'"
@@ -38,11 +40,11 @@
             :key="filamentInfo.type.shortName"
           >
             <div
-              class="col-sm-12 col-md-6 col-lg-4"
               v-if="
                 visibleTypes.length == 0 ||
-                visibleTypes.includes(filamentInfo.type.shortName)
+                  visibleTypes.includes(filamentInfo.type.shortName)
               "
+              class="col-sm-12 col-md-6 col-lg-4"
             >
               <q-card class="q-ma-xs" bordered>
                 <q-toolbar
@@ -70,21 +72,20 @@
                   <span class="q-pl-lg">
                     {{ filamentInfo.type.name }} ({{
                       filamentInfo.type.shortName
-                    }})</span
-                  >
+                    }})</span>
                 </q-toolbar>
                 <q-card-section class="q-py-xs">
                   <div class="text-h6 q-mb-xs">
                     Умови друку {{ filamentInfo.type.shortName }}:
                   </div>
                   Температура друку {{ filamentInfo.conditions.nozzleTemp }}°
-                  С<br />
-                  Температура стола {{ filamentInfo.conditions.bedTemp }}° С<br />
+                  С<br>
+                  Температура стола {{ filamentInfo.conditions.bedTemp }}° С<br>
                   <span
                     v-for="text in filamentInfo.conditions.texts"
                     :key="text"
                   >
-                    {{ text }} <br />
+                    {{ text }} <br>
                   </span>
                 </q-card-section>
                 <q-card-section class="q-py-xs">
@@ -92,7 +93,7 @@
                     Умови експлуатації готових деталей:
                   </div>
                   <span v-for="text in filamentInfo.termsOfUse" :key="text">
-                    {{ text }} <br />
+                    {{ text }} <br>
                   </span>
                 </q-card-section>
                 <q-card-section class="q-pb-md q-pt-xs">
@@ -104,7 +105,7 @@
                     v-for="text in filamentInfo.storageConditions"
                     :key="text"
                   >
-                    {{ text }} <br />
+                    {{ text }} <br>
                   </span>
                 </q-card-section>
               </q-card>
@@ -112,6 +113,7 @@
           </template>
         </div>
         <q-table
+          v-model:pagination="pagination"
           flat
           bordered
           title="Виробники"
@@ -119,10 +121,8 @@
           :columns="manufacturercolumns"
           row-key="name"
           hide-bottom
-          hide-pagination
-          v-model:pagination="pagination"
         >
-          <template v-slot:body-cell-ico="props">
+          <template #body-cell-ico="props">
             <q-td :props="props" style="padding: 0">
               <q-img
                 :src="props.row.imgUrl"
@@ -131,7 +131,7 @@
               />
             </q-td>
           </template>
-          <template v-slot:body-cell-name="props">
+          <template #body-cell-name="props">
             <q-td :props="props" style="padding-left: 8px">
               <span class="text-h5">{{ props.row.name }} </span>
               <a :href="props.row.siteUrl" target="_blank" class="q-ml-xs">
@@ -139,7 +139,7 @@
               </a>
             </q-td>
           </template>
-          <template v-slot:body-cell-types="props">
+          <template #body-cell-types="props">
             <q-td :props="props">
               <q-chip
                 v-for="filament in props.row.types"
@@ -151,12 +151,12 @@
               >
                 {{
                   filament.shortName +
-                  ($windowWidth > 1500 ? " (" + filament.name + ")" : "")
+                    ($windowWidth > 1500 ? " (" + filament.name + ")" : "")
                 }}
               </q-chip>
             </q-td>
           </template>
-          <template v-slot:body-cell-rating="props">
+          <template #body-cell-rating="props">
             <q-td :props="props" style="padding: 0">
               <a
                 v-if="props.row.rating == null"
@@ -179,13 +179,15 @@
             </q-td>
           </template>
         </q-table>
-        <h3 class="q-mt-none">Вага котушок пластику різних виробників</h3>
-        LBL 3kg - 630-650g<br />
-        LBL 0.8kg - 220g <br />
-        Plexiwire (0.9kg) -150-169g <br />
-        3Dplast 0.85kg - 240g <br />
-        3dPlast 3kg - 630-645g <br />
-        Monofilament 0.75kg - 230g <br />
+        <h3 class="q-mt-none">
+          Вага котушок пластику різних виробників
+        </h3>
+        LBL 3kg - 630-650g<br>
+        LBL 0.8kg - 220g <br>
+        Plexiwire (0.9kg) -150-169g <br>
+        3Dplast 0.85kg - 240g <br>
+        3dPlast 3kg - 630-645g <br>
+        Monofilament 0.75kg - 230g <br>
         U3DF 0.75kg - 255g
       </q-card>
     </div>
@@ -311,6 +313,7 @@ export default defineComponent({
         types: [filamentTypes.petg],
       },
     };
+
     return {
       imgUrl: ref(""),
       visibleTypes: ref([]),

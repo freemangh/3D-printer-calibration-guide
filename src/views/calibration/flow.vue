@@ -3,7 +3,9 @@
     <PopUpImage v-model:url.sync="imgUrl" />
     <div class="row q-ma-md justify-center">
       <q-card class="col-12 q-pa-md">
-        <h3 class="q-mt-none">Калібрування потоку</h3>
+        <h3 class="q-mt-none">
+          Калібрування потоку
+        </h3>
         <p>Зробимо вигляд що тут щось є</p>
       </q-card>
     </div>
@@ -15,7 +17,7 @@ import { ref } from "vue";
 import PopUpImage from "../../Components/PopUpImage.vue";
 
 export default {
-  name: "flow",
+  name: "Flow",
   components: {
     PopUpImage,
   },

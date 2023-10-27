@@ -7,7 +7,9 @@
       "
     >
       <q-card class="col-12 q-pa-md" bordered>
-        <h3 class="q-mt-none">Калібрування E-Steps</h3>
+        <h3 class="q-mt-none">
+          Калібрування E-Steps
+        </h3>
 
         <p>
           Калібрування E-Steps (кількість кроків на один міліметр філаменту),
@@ -45,10 +47,10 @@
           <q-btn to="feeder" outline class="q-py-none" label="фідера" />
           -
           <q-btn
-            @click="imgUrl = '/ucarecdn.webp'"
             outline
             class="q-py-none"
             label="фото"
+            @click="imgUrl = '/ucarecdn.webp'"
           />
           видавлюємо
           <q-badge color="info" text-color="black">
@@ -83,7 +85,7 @@
           </q-bar>
           <q-card-section>
             <q-banner inline-actions rounded class="bg-orange text-white">
-              <template v-slot:avatar>
+              <template #avatar>
                 <q-icon name="info" />
               </template>
               Увага, не забувайте змінювати значення E-Steps в калькуляторі
@@ -93,28 +95,27 @@
               (OldE / (Mark - Fact)) * Move =
               <span class="text-weight-bolder">NewE</span>
             </p>
-            NewE - Нове значення E-Steps<br />
+            NewE - Нове значення E-Steps<br>
             <q-badge color="info" text-color="black">
               Mark
               <q-icon name="info" size="14px" class="q-ml-xs" />
             </q-badge>
-            - Де поставили мітку (11 або 31см або інше)<br />
+            - Де поставили мітку (11 або 31см або інше)<br>
             <q-badge color="info" text-color="black">
               Move
               <q-icon name="info" size="14px" class="q-ml-xs" />
             </q-badge>
-            - Скільки видавили (10см або 30см або інше)<br />
+            - Скільки видавили (10см або 30см або інше)<br>
             <q-badge color="info" text-color="black">
               Fact
               <q-icon name="info" size="14px" class="q-ml-xs" />
             </q-badge>
-            - Відстань до мітки після видавлювання прутка<br />
+            - Відстань до мітки після видавлювання прутка<br>
             <q-badge color="info" text-color="black">
               OldE
               <q-icon name="info" size="14px" class="q-ml-xs" />
             </q-badge>
-            - Поточне значення E-Steps<br />
-
+            - Поточне значення E-Steps<br>
             <q-banner
               rounded
               :class="
@@ -127,7 +128,7 @@
                 "
                 class="bg-primary text-white"
               >
-                <template v-slot:avatar>
+                <template #avatar>
                   <q-icon name="info" />
                 </template>
                 Похибка менше 1мм на 10см, це хороший результат, можете
@@ -140,31 +141,33 @@
                 }}</span>
               </p>
               <q-input
-                class="q-pa-xs"
                 v-model.number="mark"
+                class="q-pa-xs"
                 type="number"
                 filled
                 label="Mark Де поставили мітку"
               >
-                <template v-slot:prepend> <q-icon name="event" /></template>
+                <template #prepend>
+                  <q-icon name="event" />
+                </template>
               </q-input>
               <q-input
-                class="q-pa-xs"
                 v-model.number="move"
+                class="q-pa-xs"
                 type="number"
                 filled
                 label="Move Скільки видавили"
               />
               <q-input
-                class="q-pa-xs"
                 v-model.number="fact"
+                class="q-pa-xs"
                 type="number"
                 filled
                 label="Fact Відстань до мітки після видавлювання"
               />
               <q-input
-                class="q-pa-xs"
                 v-model.number="oldE"
+                class="q-pa-xs"
                 type="number"
                 filled
                 label="OldE Поточне значення E-Steps"
@@ -184,7 +187,7 @@ import { vueWindowSizeMixin } from "vue-window-size/mixin";
 
 export default defineComponent({
   mixins: [vueWindowSizeMixin()],
-  name: "e-steps",
+  name: "ESteps",
   components: {
     PopUpImage,
   },
