@@ -19,6 +19,7 @@ const esteps = () => import("../views/calibration/e-steps.vue");
 const flow = () => import("../views/calibration/flow.vue");
 const pid = () => import("../views/calibration/pid.vue");
 const retract = () => import("../views/calibration/retract.vue");
+const bed = () => import("../views/calibration/bed.vue");
 const calibration = () => import("../views/calibration/index.vue");
 
 const routes = [
@@ -208,6 +209,19 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/bed",
+    name: "bed",
+    component: BaseLayout,
+    children: [
+      {
+        path: "",
+        name: "bed",
+        component: bed,
+      },
+    ],
+  },
+
   {
     path: "/:pathMatch(.*)*",
     name: "404",
