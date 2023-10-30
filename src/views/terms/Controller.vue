@@ -1,9 +1,15 @@
 <template>
   <q-page>
     <PopUpImage v-model:url.sync="imgUrl" />
-    <div class="row q-ma-md justify-center">
+    <div
+      :class="
+        ($windowWidth > 768 ? 'q-ma-md' : 'q-ma-none') + ' row justify-center'
+      "
+    >
       <q-card class="col-12 q-pa-md">
-        <h3 class="q-mt-none">Контроллер, плате керування</h3>
+        <h3 class="q-mt-none">
+          Контроллер, плате керування
+        </h3>
         <p>Зробимо вигляд що тут щось є</p>
       </q-card>
     </div>
@@ -11,10 +17,13 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, defineComponent } from "vue";
 import PopUpImage from "../../Components/PopUpImage.vue";
 
-export default {
+import { vueWindowSizeMixin } from "vue-window-size/mixin";
+
+export default defineComponent({
+  mixins: [vueWindowSizeMixin()],
   name: "Controller",
   components: {
     PopUpImage,
@@ -24,5 +33,5 @@ export default {
       imgUrl: ref("")
     };
   },
-};
+});
 </script>

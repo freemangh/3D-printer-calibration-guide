@@ -54,11 +54,15 @@
 
 <script>
 import { ref, defineComponent } from "vue";
+import PopUpImage from "../../Components/PopUpImage.vue";
 import { vueWindowSizeMixin } from "vue-window-size/mixin";
 
 export default defineComponent({
   mixins: [vueWindowSizeMixin()],
   name: "Calibration",
+  components: {
+    PopUpImage,
+  },
   components: {
     PopUpImage,
   },
