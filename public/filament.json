@@ -1,0 +1,54 @@
+[
+  {
+    "name": "ФАЙНИЙ",
+    "filaments": [
+      {
+        "type": "PETG",
+        "weight": 0.75,
+        "price": 400,
+        "color": "шось",
+        "url": "посилання де купити"
+      },
+      {
+        "type": "ABS",
+        "weight": 3,
+        "price": 1200,
+        "color": "не обовязково колір, можна наприклад тип, ABS+ наприклад",
+        "url": "посилання де купити"
+      },
+      {
+        "type": "CoPET",
+        "weight": 0.9,
+        "price": 600,
+        "color": "",
+        "url": "посилання де купити"
+      }
+    ]
+  },
+  {
+    "name": "Plexiwire",
+    "filaments": [
+      {
+        "type": "ABS",
+        "weight": 1,
+        "price": 695,
+        "color": "ABS+ Синій",
+        "url": "https://shop.plexiwire.com.ua/abs-plus-filament/abs-plus-blue-400/"
+      },
+      {
+        "type": "ABS",
+        "weight": 0.75,
+        "price": 540,
+        "color": "ABS+ Синій",
+        "url": "https://shop.plexiwire.com.ua/abs-plus-filament/abs-plus-blue-300/"
+      },
+      {
+        "type": "ABS",
+        "weight": 0.25,
+        "price": 185,
+        "color": "ABS+ Синій",
+        "url": "https://shop.plexiwire.com.ua/abs-plus-filament/abs-plus-blue-100/"
+      }
+    ]
+  }
+]
