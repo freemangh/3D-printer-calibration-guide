@@ -225,14 +225,14 @@ export default defineComponent({
       plexiwire: {
         name: "Plexiwire",
         imgUrl: "https://shop.plexiwire.com.ua/assets/favicon.ico",
-        siteUrl: "https://shop.plexiwire.com.ua/",
+        siteUrl: "https://shop.plexiwire.com.ua",
         rating: null,
         types: [filamentTypes.abs, filamentTypes.pla, filamentTypes.petg],
       },
       monofilament: {
         name: "MonoFilament",
         imgUrl: "https://monofilament.com.ua/image/catalog/monofav.png",
-        siteUrl: "https://monofilament.com.ua/ua/",
+        siteUrl: "https://monofilament.com.ua/ua",
         rating: null,
         types: [filamentTypes.abs, filamentTypes.pla, filamentTypes.copet],
       },
@@ -240,7 +240,7 @@ export default defineComponent({
         name: "3D filament",
         imgUrl:
           "https://images.prom.ua/4633378203_w200_h100_3dfilament-virobnik.jpg",
-        siteUrl: "https://3dfilament.com.ua/ua/",
+        siteUrl: "https://3dfilament.com.ua/ua",
         rating: null,
         types: [filamentTypes.abs, filamentTypes.pla, filamentTypes.petg],
       },
@@ -248,7 +248,7 @@ export default defineComponent({
         name: "Pochatok filament",
         imgUrl:
           "https://pochatok-filament.com.ua/wp-content/themes/filament/assets/img/favicon/apple-touch-icon.png",
-        siteUrl: "https://pochatok-filament.com.ua/",
+        siteUrl: "https://pochatok-filament.com.ua",
         rating: null,
         types: [filamentTypes.pla],
       },
@@ -256,7 +256,7 @@ export default defineComponent({
         name: "LBL",
         imgUrl:
           "https://images.prom.ua/4155800364_w150_h70_lbl-ukrayinskij.jpg",
-        siteUrl: "https://lbl-corp.com/ua/",
+        siteUrl: "https://lbl-corp.com/ua",
         rating: null,
         types: [filamentTypes.pla, filamentTypes.copet],
       },
@@ -271,28 +271,28 @@ export default defineComponent({
         name: "3dplast",
         imgUrl:
           "https://images.prom.ua/1405322810_w200_h100_3dplast-virobnik.jpg",
-        siteUrl: "https://3dplast.biz/ua/",
+        siteUrl: "https://3dplast.biz/ua",
         rating: null,
         types: [filamentTypes.abs, filamentTypes.pla, filamentTypes.copet],
       },
       U3DF: {
         name: "U3DF",
         imgUrl: "https://images.prom.ua/785475509_785475509.ico",
-        siteUrl: "https://u3df.com.ua/ua/",
+        siteUrl: "https://u3df.com.ua/ua",
         rating: null,
         types: [filamentTypes.abs, filamentTypes.pla, filamentTypes.petg],
       },
       BOZE: {
         name: "BOZE",
         imgUrl: "https://www.boze.com.ua/templates/t3_bs3_blank/favicon.ico",
-        siteUrl: "https://www.boze.com.ua/index.php/ru/",
+        siteUrl: "https://www.boze.com.ua/index.php/ru",
         rating: null,
         types: [filamentTypes.abs, filamentTypes.pla],
       },
       DASplast: {
         name: "DASplast",
         imgUrl: "https://images.prom.ua/620466983_w150_h70_dasplast.jpg",
-        siteUrl: "https://dasplast.com/ua/",
+        siteUrl: "https://dasplast.com/ua",
         rating: null,
         types: [filamentTypes.abs, filamentTypes.pla],
       },
@@ -300,7 +300,7 @@ export default defineComponent({
         name: "3DPLASTIC",
         imgUrl:
           "https://www.3dplastic.com.ua/templates/site/images/favicon.ico",
-        siteUrl: "https://www.3dplastic.com.ua/",
+        siteUrl: "https://www.3dplastic.com.ua",
         rating: null,
         types: [filamentTypes.petg],
       },
@@ -308,9 +308,41 @@ export default defineComponent({
         name: "3D BRO",
         imgUrl:
           "https://petg.com.ua/wp-content/uploads/2023/02/cropped-favicon-32x32.png",
-        siteUrl: "https://petg.com.ua/",
+        siteUrl: "https://petg.com.ua",
         rating: null,
         types: [filamentTypes.petg],
+      },
+      devildesign: {
+        name: "Devil Design",
+        imgUrl:
+          "https://devildesign.com/wp-content/uploads/2018/11/xDevilSamoD.png.pagespeed.ic.7XWlwmN5oT.webp",
+        siteUrl: "https://devildesign.com/en",
+        rating: null,
+        types: [filamentTypes.abs, filamentTypes.pla, filamentTypes.petg],
+      },
+      creality: {
+        name: "Creality",
+        imgUrl:
+          "https://img.fantaskycdn.com/087c64dc0de25f179fa98c50a7db745c.svg",
+        siteUrl: "https://store.creality.com/eu/collections/materials",
+        rating: null,
+        types: [filamentTypes.pla],
+      },
+      sunlu: {
+        name: "SUNLU",
+        imgUrl:
+          "https://www.sunlu.com/cdn/shop/files/logo_301304d0-bcbe-41ec-9dc5-da8ee36c8db5_32x.png?v=1686712485",
+        siteUrl: "https://www.sunlu.com",
+        rating: null,
+        types: [filamentTypes.abs, filamentTypes.pla, filamentTypes.petg],
+      },
+      gembird: {
+        name: "gembird",
+        imgUrl:
+          "https://gembird.ua/pub/media/favicon/websites/4/logo_red_short.png",
+        siteUrl: "https://gembird.ua/katalog/3d/filament-dlja-3d-5",
+        rating: null,
+        types: [filamentTypes.abs, filamentTypes.pla, filamentTypes.petg],
       },
     };
 
