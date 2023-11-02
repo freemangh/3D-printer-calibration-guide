@@ -1,11 +1,7 @@
 <template>
   <q-page>
     <PopUpImage v-model:url.sync="imgUrl" />
-    <div
-      :class="
-        ($windowWidth > 768 ? 'q-ma-md' : 'q-ma-none') + ' row justify-center'
-      "
-    >
+    <div class="page row justify-center">
       <q-card class="col-12 q-pa-md" bordered>
         <h3 class="q-mt-none">
           Порядок проведення налаштувань та калібровок.
@@ -55,10 +51,8 @@
 <script>
 import { ref, defineComponent } from "vue";
 import PopUpImage from "../../Components/PopUpImage.vue";
-import { vueWindowSizeMixin } from "vue-window-size/mixin";
 
 export default defineComponent({
-  mixins: [vueWindowSizeMixin()],
   name: "Calibration",
   components: {
     PopUpImage,
