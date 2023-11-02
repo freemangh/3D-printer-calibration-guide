@@ -49,10 +49,7 @@
         </q-bar>
         <q-card-section>
           Знайшов помилку? Хочеш допомогти з наповненням сайту?
-          <a
-            href="https://t.me/pavver"
-            target="_blank"
-          >
+          <a href="https://t.me/pavver" target="_blank">
             <svg
               width="32px"
               height="32px"
@@ -143,9 +140,19 @@ export default {
 
     Dark.set(localStorage.dark === "true");
 
+    let file = document.createElement("link");
+    file.rel = "stylesheet";
+    file.href = Dark.isActive
+      ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css"
+      : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css";
+    document.head.appendChild(file);
+
     function darkChange() {
       Dark.set(!Dark.isActive);
       localStorage.dark = Dark.isActive;
+      file.href = Dark.isActive
+        ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css"
+        : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css";
     }
 
     function onSelected(node) {

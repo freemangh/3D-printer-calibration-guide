@@ -4,9 +4,10 @@
     <div class="page row justify-center">
       <q-card class="col-12 q-pa-md">
         <h3 class="q-mt-none">
-          Калібрування потоку
+          Калібрування PID
         </h3>
         <p>
+          <highlightjs language="gcode" code="M106 S255" />
           // todo все хуйня давай по новій # Калібрування PID [Що таке
           PID](https://ru.wikipedia.org/wiki/%D0%9F%D0%98%D0%94-%D1%80%D0%B5%D0%B3%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80)
           ## Калібрування через COM порт для Marlin Рекомендується запускати
