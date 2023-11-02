@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         />
         <q-avatar>
-          <img src="https://drukarmy.org.ua/apple-touch-icon.png">
+          <img src="favicon.png">
         </q-avatar>
 
         <q-toolbar-title />
