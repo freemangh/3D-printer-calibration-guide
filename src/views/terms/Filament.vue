@@ -156,7 +156,7 @@
             <q-td :props="props" style="padding: 0">
               <a
                 v-if="props.row.rating == null"
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdaqVGhKQrPTRuNOTBs-48-V9OAL3-UyqqAgWJKhi4-n-STmw/viewform"
+                href="https://forms.gle/biaSCGy3A8MWPMNVA"
                 target="_blank"
               >
                 <q-icon name="link" size="32px" />
@@ -324,6 +324,14 @@ export default defineComponent({
         rating: null,
         types: [filamentTypes.pla],
       },
+      owl: {
+        name: "OWL-Filament",
+        imgUrl:
+          "https://owl-filament.de/images/logos/favicon.ico",
+        siteUrl: "https://owl-filament.de",
+        rating: null,
+        types: [filamentTypes.pla],
+      },
       sunlu: {
         name: "SUNLU",
         imgUrl:
@@ -331,6 +339,22 @@ export default defineComponent({
         siteUrl: "https://www.sunlu.com",
         rating: null,
         types: [filamentTypes.abs, filamentTypes.pla, filamentTypes.petg],
+      },
+      elegoo: {
+        name: "ELEGOO",
+        imgUrl:
+          "https://www.elegoo.com/cdn/shop/files/20210607111616_32x32.png?v=1623035926",
+        siteUrl: "https://www.elegoo.com",
+        rating: null,
+        types: [filamentTypes.pla],
+      },
+      kingroon: {
+        name: "KINGROON",
+        imgUrl:
+          "https://kingroon.com/cdn/shop/files/logo_a5a46135-e293-47ec-9833-3fc91b0c8721_32x32.png?v=1651311584",
+        siteUrl: "https://kingroon.com",
+        rating: null,
+        types: [filamentTypes.abs, filamentTypes.pla],
       },
       gembird: {
         name: "gembird",
